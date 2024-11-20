@@ -4,6 +4,7 @@ import Logo from "../assets/Logo.png";
 import googleIcon from "../assets/google_icon.png";
 import Login_Demo from "./Login_Demo";
 import backgroundImg from "../assets/Background_Img.png";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   return (
@@ -36,9 +37,18 @@ const Login = () => {
                 Unlock a world of AI Powered Customer Success Platform <br /> with
                 a single click! Please login in to your account.
               </p>
-              <button className="border-2 border-gray-50 rounded-md flex justify-center gap-2 items-center px-3 py-1 shadow-md">
+              {/* <button className="border-2 border-gray-50 rounded-md flex justify-center gap-2 items-center px-3 py-1 shadow-md">
                 <img src={googleIcon} alt="" className="w-5" /> Login with Google
-              </button>
+              </button> */}
+
+<GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>
             </div>
 
             {/* Divider with centered "or" */}
